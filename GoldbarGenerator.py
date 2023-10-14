@@ -155,17 +155,22 @@ def goldbar_generator(principles, number_of_tus, part_library):
     seq = []
     for i in range(number_of_tus):
 
-        if L and i != (number_of_tus-1):
-            seq.append("promoter_any then zero-or-one(promoter_any) then rbs then one-or-more(cds) then terminator_notleaky")
+        seq.append("promoter_any then zero-or-one(promoter_any) then rbs then one-or-more(cds) then terminator_any")
 
-        else:
-            seq.append("promoter_any then zero-or-one(promoter_any) then rbs then one-or-more(cds) then terminator_any")
     seq = ' then '.join(seq)
     seq = f"({seq})"
     goldbar.append(seq)
+
+
     if L:
-        # add terminator_notleaky to categories
-        categories["terminator_notleaky"] = {"terminator": parts["terminator_notleaky"]}
+        # Add to goldbar
+        goldbar.append("(one-or-more(any_except_terminator_notleaky) then terminator_any)")
+
+        # add any_except_terminator_notleaky to categories
+        categories["any_except_terminator_notleaky"] = {"promoter": parts["promoter"],
+                                                        "ribosomeBindingSite": parts["ribosomeBindingSite"],
+                                                        "cds": parts["cds"],
+                                                        "terminator": parts["terminator_notleaky"]}
 
     if P:
         # Add to goldbar
