@@ -80,10 +80,6 @@ def principles_used(principles):
         pji_library = None
     if 'r' in principles:
         R = True
-        FILEPATH = input('\nEnter path to Not Repeated Library: ')
-        repeated_library = pd.read_csv(FILEPATH, sep=',')
-        print("\nNot Repeated Library:")
-        print(repeated_library)
     else:
         R = False
         repeated_library = None
@@ -114,6 +110,9 @@ def extract_parts(part_library):
     regular_terminators = part_library['terminators'].dropna().to_list()
     all_terminators = np.concatenate((regular_terminators, leaky_terminators)).tolist()
 
+    # Parts Not to be repeated
+    not_repeated_parts = part_library['do not repeat'].dropna().to_list()
+
     # All Parts
     all_parts = all_promoters + rbs + cds + all_terminators
 
@@ -123,7 +122,8 @@ def extract_parts(part_library):
              'cds': cds,
              'terminator': all_terminators,
              'promoter_notroadblocking': regular_promoters,
-             'terminator_notleaky': regular_terminators}
+             'terminator_notleaky': regular_terminators,
+             'do not repeat': not_repeated_parts}
 
     return parts
 
@@ -291,7 +291,7 @@ def goldbar_generator(principles, number_of_tus, part_library):
                                                      "terminator": [x for x in parts["terminator"] if x not in [part, part1]]}
                 
     if R:
-        for part in repeated_library['parts'].to_list():
+        for part in parts['do not repeat']:
             # Add to goldbar
             goldbar.append(f"(zero-or-more(any_except_{part}) then zero-or-one({part} then zero-or-more(any_except_{part})))")
 
