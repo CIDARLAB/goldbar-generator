@@ -1,0 +1,6 @@
+promoter,ribosomebindingsite,cds,terminators,promoter road blocking,leaky terminators,do not repeat
+p1,rb1,cds1,t1,pr1,tleaky1,p2
+p2,rb2,cds2,t2,pr2,tleaky2,cds1
+p3,rb3,cds3,t3,pr3,tleaky3,
+p4,rb4,cds4,t4,pr4,tleaky4,
+p5,rb5,cds5,t5,pr5,tleaky5,
