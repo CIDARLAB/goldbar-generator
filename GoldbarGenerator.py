@@ -80,11 +80,7 @@ def principles_used(principles):
         pji_library = None
     if 'r' in principles:
         R = True
-    else:
-        R = False
-        repeated_library = None
-
-    return P, L, O, I, R, orthogonal_library, pji_library, repeated_library
+    return P, L, O, I, R, orthogonal_library, pji_library
 
 
 def extract_parts(part_library):
@@ -143,7 +139,7 @@ def goldbar_generator(principles, number_of_tus, part_library):
     parts = extract_parts(part_library)
 
     # activate principles
-    P, L, O, I, R, orthogonal_library, pji_library, repeated_library = principles_used(principles)
+    P, L, O, I, R, orthogonal_library, pji_library = principles_used(principles)
 
     goldbar = []
     categories = {"promoter_any": {"promoter": parts["promoter"]},
