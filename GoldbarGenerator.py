@@ -95,23 +95,23 @@ def extract_parts(part_library):
     :return : parts
     """
     # Promoters
-    blocking_promoters = part_library['promoter road blocking'].dropna().to_list()
+    blocking_promoters = part_library['promoter RB'].dropna().to_list()
     regular_promoters = part_library['promoter'].dropna().to_list()
     all_promoters = np.concatenate((regular_promoters, blocking_promoters)).tolist()
 
     # RBS
-    rbs = part_library['ribosomebindingsite'].dropna().to_list()
+    rbs = part_library['rbs'].dropna().to_list()
 
     # CDS
     cds = part_library['cds'].dropna().to_list()
 
     # Terminators
-    leaky_terminators = part_library['leaky terminators'].dropna().to_list()
+    leaky_terminators = part_library['L terminators'].dropna().to_list()
     regular_terminators = part_library['terminators'].dropna().to_list()
     all_terminators = np.concatenate((regular_terminators, leaky_terminators)).tolist()
 
     # Parts Not to be repeated
-    not_repeated_parts = part_library['do not repeat'].dropna().to_list()
+    not_repeated_parts = part_library['DNR'].dropna().to_list()
 
     # All Parts
     all_parts = all_promoters + rbs + cds + all_terminators
