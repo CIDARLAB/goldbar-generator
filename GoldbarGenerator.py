@@ -151,7 +151,7 @@ def goldbar_generator(principles, number_of_tus, part_library):
     seq = []
     for i in range(number_of_tus):
 
-        seq.append("promoter_any then zero-or-one(promoter_any) then rbs then one-or-more(cds) then terminator_any")
+        seq.append("promoter_any then zero-or-one(promoter_any) then one-or-more(rbs then cds) then terminator_any")
 
     seq = ' then '.join(seq)
     seq = f"({seq})"
