@@ -203,7 +203,7 @@ def goldbar_generator(principles, number_of_tus, part_library):
 
             for part1 in orthogonal_library[part].dropna().to_list():
                 # Add to goldbar
-                goldbar.append(f"((one-or-more(any_except_{part}and{part1})) or (zero-or-more(any_except_{part1}) then {part} then zero-or-more(any_except_{part1})) or (zero-or-more(any_except_{part}) then {part1} then zero-or-more(any_except_{part})))")
+                goldbar.append(f"zero-or-more(any_except_{part}and{part1}) then zero-or-one(({part} then zero-or-more(any_except_{part1})) or ({part1} then zero-or-more(any_except_{part})))")
 
                 # Add part1 to categories
                 if part1 in parts["promoter"]:
