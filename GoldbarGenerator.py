@@ -218,14 +218,14 @@ def goldbar_generator(principles, number_of_tus, part_library):
 
                 else:
                     categories[part1] = {"terminator": [part1]}
-
+                
                 # Add any_except_part1 to categories
                 categories[f"any_except_{part1}"] = {"promoter": [x for x in parts["promoter"] if x != part1],
                                                      "ribosomeBindingSite": [x for x in parts["ribosomeBindingSite"] if x != part1],
                                                      "cds": [x for x in parts["cds"] if x != part1],
                                                      "terminator": [x for x in parts["terminator"] if x != part1]}
 
-                # Add any_except_part+part1 to categories
+                # Add any_except_partandpart1 to categories
                 categories[f"any_except_{part}and{part1}"] = {"promoter": [x for x in parts["promoter"] if x not in [part, part1]],
                                                      "ribosomeBindingSite": [x for x in parts["ribosomeBindingSite"] if x not in [part, part1]],
                                                      "cds": [x for x in parts["cds"] if x not in [part, part1]],
@@ -250,15 +250,15 @@ def goldbar_generator(principles, number_of_tus, part_library):
             else:
                 categories[part] = {"terminator": [part]}
 
-            # Add any_except_part to categories
+            # Add any_except_part1 to categories
             categories[f"any_except_{part}"] = {"promoter": [x for x in parts["promoter"] if x != part],
-                                                 "ribosomeBindingSite": [x for x in parts["ribosomeBindingSite"] if x != part],
-                                                 "cds": [x for x in parts["cds"] if x != part],
-                                                 "terminator": [x for x in parts["terminator"] if x != part]}
+                                                    "ribosomeBindingSite": [x for x in parts["ribosomeBindingSite"] if x != part],
+                                                    "cds": [x for x in parts["cds"] if x != part],
+                                                    "terminator": [x for x in parts["terminator"] if x != part]}
 
             for part1 in pji_library[part].dropna().to_list():
                 # Add to goldbar
-                goldbar.append(f"((one-or-more(any_except_{part}and{part1})) or (one-or-more(zero-or-more(any_except_{part}and{part1}) then any_except_{part1} then {part} then any_except_{part1} then zero-or-more(any_except_{part}and{part1}))) or (one-or-more(zero-or-more(any_except_{part}and{part1}) then any_except_{part} then {part1} then any_except_{part} then zero-or-more(any_except_{part}and{part1}))))")
+                goldbar.append(f"(zero-or-more(any_except_{part} or (one-or-more({part}) then any_except_{part}and{part1})) then zero-or-more({part}))")
 
                 # Add part1 to categories
                 if part1 in parts["promoter"]:
@@ -273,12 +273,6 @@ def goldbar_generator(principles, number_of_tus, part_library):
 
                 else:
                     categories[part1] = {"terminator": [part1]}
-                
-                # Add any_except_part1 to categories
-                categories[f"any_except_{part1}"] = {"promoter": [x for x in parts["promoter"] if x != part1],
-                                                     "ribosomeBindingSite": [x for x in parts["ribosomeBindingSite"] if x != part1],
-                                                     "cds": [x for x in parts["cds"] if x != part1],
-                                                     "terminator": [x for x in parts["terminator"] if x != part1]}
 
                 # Add any_except_partandpart1 to categories
                 categories[f"any_except_{part}and{part1}"] = {"promoter": [x for x in parts["promoter"] if x not in [part, part1]],
