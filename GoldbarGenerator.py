@@ -203,7 +203,7 @@ def goldbar_generator(principles, number_of_tus, part_library):
 
             for part1 in orthogonal_library[part].dropna().to_list():
                 # Add to goldbar
-                goldbar.append(f"zero-or-more(any_except_{part}and{part1}) then zero-or-one(({part} then zero-or-more(any_except_{part1})) or ({part1} then zero-or-more(any_except_{part})))")
+                goldbar.append(f"(zero-or-more(any_except_{part}and{part1}) then zero-or-one(({part} then zero-or-more(any_except_{part1})) or ({part1} then zero-or-more(any_except_{part}))))")
 
                 # Add part1 to categories
                 if part1 in parts["promoter"]:
@@ -273,14 +273,14 @@ def goldbar_generator(principles, number_of_tus, part_library):
 
                 else:
                     categories[part1] = {"terminator": [part1]}
-
+                
                 # Add any_except_part1 to categories
                 categories[f"any_except_{part1}"] = {"promoter": [x for x in parts["promoter"] if x != part1],
                                                      "ribosomeBindingSite": [x for x in parts["ribosomeBindingSite"] if x != part1],
                                                      "cds": [x for x in parts["cds"] if x != part1],
                                                      "terminator": [x for x in parts["terminator"] if x != part1]}
 
-                # Add any_except_part+part1 to categories
+                # Add any_except_partandpart1 to categories
                 categories[f"any_except_{part}and{part1}"] = {"promoter": [x for x in parts["promoter"] if x not in [part, part1]],
                                                      "ribosomeBindingSite": [x for x in parts["ribosomeBindingSite"] if x not in [part, part1]],
                                                      "cds": [x for x in parts["cds"] if x not in [part, part1]],
