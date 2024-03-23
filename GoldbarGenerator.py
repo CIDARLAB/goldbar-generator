@@ -305,7 +305,7 @@ def goldbar_generator(principles, number_of_tus, part_library):
 
 
     # Join goldbar together with "and0"
-    goldbar = " and0 ".join(goldbar)
+    goldbar = " and1 ".join(goldbar)
 
     # print goldbar and categories
     print(f'\nGoldbar:\n{goldbar}')
