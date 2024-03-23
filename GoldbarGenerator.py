@@ -170,7 +170,7 @@ def goldbar_generator(principles, number_of_tus, part_library):
 
     if P:
         # Add to goldbar
-        goldbar.append("(one-or-more(promoter_any then zero-or-one(promoter_notroadblocking) then rbs then one-or-more(cds) then terminator_any))")
+        goldbar.append("(zero-or-more(promoter_any then zero-or-one(promoter_notroadblocking) then one-or-more(rbs then cds) then terminator_any))")
 
         # Add promoter_notroadblocking to categories
         categories["promoter_notroadblocking"] = {"promoter": parts["promoter_notroadblocking"]}
