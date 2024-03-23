@@ -1,0 +1,43 @@
+Goldbar:
+(promoter_any then zero-or-one(promoter_any) then one-or-more(rbs then cds) then terminator_any then promoter_any then zero-or-one(promoter_any) then one-or-more(rbs then cds) then terminator_any) and1 (zero-or-more(any_except_terminator_leaky) then zero-or-one(terminator_any)) and1 (zero-or-more(promoter_any then zero-or-one(promoter_notroadblocking) then one-or-more(rbs then cds) then terminator_any)) and1 (zero-or-more(any_except_cds3andp1) then zero-or-one((cds3 then zero-or-more(any_except_p1)) or (p1 then zero-or-more(any_except_cds3)))) and1 (zero-or-more(any_except_cds3andp2) then zero-or-one((cds3 then zero-or-more(any_except_p2)) or (p2 then zero-or-more(any_except_cds3)))) and1 (zero-or-more(any_except_p2andp1) then zero-or-one((p2 then zero-or-more(any_except_p1)) or (p1 then zero-or-more(any_except_p2)))) and1 (zero-or-more(any_except_p1 or (one-or-more(p1) then any_except_p1andrb1)) then zero-or-more(p1)) and1 (zero-or-more(any_except_p1 or (one-or-more(p1) then any_except_p1andrb2)) then zero-or-more(p1)) and1 (zero-or-more(any_except_cds2 or (one-or-more(cds2) then any_except_cds2andt1)) then zero-or-more(cds2)) and1 (zero-or-more(any_except_p2) then zero-or-one(p2 then zero-or-more(any_except_p2))) and1 (zero-or-more(any_except_cds1) then zero-or-one(cds1 then zero-or-more(any_except_cds1)))
+
+Goldbar (rule by rule):
+(promoter_any then zero-or-one(promoter_any) then one-or-more(rbs then cds) then terminator_any then promoter_any then zero-or-one(promoter_any) then one-or-more(rbs then cds) then terminator_any) and1
+(zero-or-more(any_except_terminator_leaky) then zero-or-one(terminator_any)) and1
+(zero-or-more(promoter_any then zero-or-one(promoter_notroadblocking) then one-or-more(rbs then cds) then terminator_any)) and1
+(zero-or-more(any_except_cds3andp1) then zero-or-one((cds3 then zero-or-more(any_except_p1)) or (p1 then zero-or-more(any_except_cds3)))) and1
+(zero-or-more(any_except_cds3andp2) then zero-or-one((cds3 then zero-or-more(any_except_p2)) or (p2 then zero-or-more(any_except_cds3)))) and1
+(zero-or-more(any_except_p2andp1) then zero-or-one((p2 then zero-or-more(any_except_p1)) or (p1 then zero-or-more(any_except_p2)))) and1
+(zero-or-more(any_except_p1 or (one-or-more(p1) then any_except_p1andrb1)) then zero-or-more(p1)) and1
+(zero-or-more(any_except_p1 or (one-or-more(p1) then any_except_p1andrb2)) then zero-or-more(p1)) and1
+(zero-or-more(any_except_cds2 or (one-or-more(cds2) then any_except_cds2andt1)) then zero-or-more(cds2)) and1
+(zero-or-more(any_except_p2) then zero-or-one(p2 then zero-or-more(any_except_p2))) and1
+(zero-or-more(any_except_cds1) then zero-or-one(cds1 then zero-or-more(any_except_cds1)))
+
+Categories:
+{"promoter_any": {"promoter": ["p1", "p2", "p3", "p4", "p5", "pr1", "pr2", "pr3", "pr4", "pr5"]},
+ "rbs": {"ribosomeBindingSite": ["rb1", "rb2", "rb3", "rb4", "rb5"]},
+ "cds": {"cds": ["cds1", "cds2", "cds3", "cds4", "cds5"]},
+ "terminator_any": {"terminator": ["t1", "t2", "t3", "t4", "t5", "tleaky1", "tleaky2", "tleaky3", "tleaky4", "tleaky5"]},
+ "any_part": {"promoter": [], "ribosomeBindingSite": [], "cds": [], "terminator": []},
+ "any_except_terminator_leaky": {"promoter": ["p1", "p2", "p3", "p4", "p5", "pr1", "pr2", "pr3", "pr4", "pr5"], "ribosomeBindingSite": ["rb1", "rb2", "rb3", "rb4", "rb5"], "cds": ["cds1", "cds2", "cds3", "cds4", "cds5"], "terminator": ["t1", "t2", "t3", "t4", "t5"]},
+ "promoter_notroadblocking": {"promoter": ["p1", "p2", "p3", "p4", "p5"]},
+ "cds3": {"cds": ["cds3"]},
+ "any_except_cds3": {"promoter": ["p1", "p2", "p3", "p4", "p5", "pr1", "pr2", "pr3", "pr4", "pr5"], "ribosomeBindingSite": ["rb1", "rb2", "rb3", "rb4", "rb5"], "cds": ["cds1", "cds2", "cds4", "cds5"], "terminator": ["t1", "t2", "t3", "t4", "t5", "tleaky1", "tleaky2", "tleaky3", "tleaky4", "tleaky5"]},
+ "p1": {"promoter": ["p1"]},
+ "any_except_p1": {"promoter": ["p2", "p3", "p4", "p5", "pr1", "pr2", "pr3", "pr4", "pr5"], "ribosomeBindingSite": ["rb1", "rb2", "rb3", "rb4", "rb5"], "cds": ["cds1", "cds2", "cds3", "cds4", "cds5"], "terminator": ["t1", "t2", "t3", "t4", "t5", "tleaky1", "tleaky2", "tleaky3", "tleaky4", "tleaky5"]},
+ "any_except_cds3andp1": {"promoter": ["p2", "p3", "p4", "p5", "pr1", "pr2", "pr3", "pr4", "pr5"], "ribosomeBindingSite": ["rb1", "rb2", "rb3", "rb4", "rb5"], "cds": ["cds1", "cds2", "cds4", "cds5"], "terminator": ["t1", "t2", "t3", "t4", "t5", "tleaky1", "tleaky2", "tleaky3", "tleaky4", "tleaky5"]},
+ "p2": {"promoter": ["p2"]},
+ "any_except_p2": {"promoter": ["p1", "p3", "p4", "p5", "pr1", "pr2", "pr3", "pr4", "pr5"], "ribosomeBindingSite": ["rb1", "rb2", "rb3", "rb4", "rb5"], "cds": ["cds1", "cds2", "cds3", "cds4", "cds5"], "terminator": ["t1", "t2", "t3", "t4", "t5", "tleaky1", "tleaky2", "tleaky3", "tleaky4", "tleaky5"]},
+ "any_except_cds3andp2": {"promoter": ["p1", "p3", "p4", "p5", "pr1", "pr2", "pr3", "pr4", "pr5"], "ribosomeBindingSite": ["rb1", "rb2", "rb3", "rb4", "rb5"], "cds": ["cds1", "cds2", "cds4", "cds5"], "terminator": ["t1", "t2", "t3", "t4", "t5", "tleaky1", "tleaky2", "tleaky3", "tleaky4", "tleaky5"]},
+ "any_except_p2andp1": {"promoter": ["p3", "p4", "p5", "pr1", "pr2", "pr3", "pr4", "pr5"], "ribosomeBindingSite": ["rb1", "rb2", "rb3", "rb4", "rb5"], "cds": ["cds1", "cds2", "cds3", "cds4", "cds5"], "terminator": ["t1", "t2", "t3", "t4", "t5", "tleaky1", "tleaky2", "tleaky3", "tleaky4", "tleaky5"]},
+ "rb1": {"ribosomeBindingSite": ["rb1"]},
+ "any_except_p1andrb1": {"promoter": ["p2", "p3", "p4", "p5", "pr1", "pr2", "pr3", "pr4", "pr5"], "ribosomeBindingSite": ["rb2", "rb3", "rb4", "rb5"], "cds": ["cds1", "cds2", "cds3", "cds4", "cds5"], "terminator": ["t1", "t2", "t3", "t4", "t5", "tleaky1", "tleaky2", "tleaky3", "tleaky4", "tleaky5"]},
+ "rb2": {"ribosomeBindingSite": ["rb2"]},
+ "any_except_p1andrb2": {"promoter": ["p2", "p3", "p4", "p5", "pr1", "pr2", "pr3", "pr4", "pr5"], "ribosomeBindingSite": ["rb1", "rb3", "rb4", "rb5"], "cds": ["cds1", "cds2", "cds3", "cds4", "cds5"], "terminator": ["t1", "t2", "t3", "t4", "t5", "tleaky1", "tleaky2", "tleaky3", "tleaky4", "tleaky5"]},
+ "cds2": {"cds": ["cds2"]},
+ "any_except_cds2": {"promoter": ["p1", "p2", "p3", "p4", "p5", "pr1", "pr2", "pr3", "pr4", "pr5"], "ribosomeBindingSite": ["rb1", "rb2", "rb3", "rb4", "rb5"], "cds": ["cds1", "cds3", "cds4", "cds5"], "terminator": ["t1", "t2", "t3", "t4", "t5", "tleaky1", "tleaky2", "tleaky3", "tleaky4", "tleaky5"]},
+ "t1": {"terminator": ["t1"]},
+ "any_except_cds2andt1": {"promoter": ["p1", "p2", "p3", "p4", "p5", "pr1", "pr2", "pr3", "pr4", "pr5"], "ribosomeBindingSite": ["rb1", "rb2", "rb3", "rb4", "rb5"], "cds": ["cds1", "cds3", "cds4", "cds5"], "terminator": ["t2", "t3", "t4", "t5", "tleaky1", "tleaky2", "tleaky3", "tleaky4", "tleaky5"]},
+ "cds1": {"cds": ["cds1"]},
+ "any_except_cds1": {"promoter": ["p1", "p2", "p3", "p4", "p5", "pr1", "pr2", "pr3", "pr4", "pr5"], "ribosomeBindingSite": ["rb1", "rb2", "rb3", "rb4", "rb5"], "cds": ["cds2", "cds3", "cds4", "cds5"], "terminator": ["t1", "t2", "t3", "t4", "t5", "tleaky1", "tleaky2", "tleaky3", "tleaky4", "tleaky5"]}}
