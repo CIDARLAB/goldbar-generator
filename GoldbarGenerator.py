@@ -160,10 +160,10 @@ def goldbar_generator(principles, number_of_tus, part_library):
 
     if L:
         # Add to goldbar
-        goldbar.append("(one-or-more(any_except_terminator_notleaky) then terminator_any)")
+        goldbar.append("(zero-or-more(any_except_terminator_leaky) then zero-or-one(terminator_any))")
 
         # add any_except_terminator_notleaky to categories
-        categories["any_except_terminator_notleaky"] = {"promoter": parts["promoter"],
+        categories["any_except_terminator_leaky"] = {"promoter": parts["promoter"],
                                                         "ribosomeBindingSite": parts["ribosomeBindingSite"],
                                                         "cds": parts["cds"],
                                                         "terminator": parts["terminator_notleaky"]}
