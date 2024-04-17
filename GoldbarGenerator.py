@@ -8,11 +8,11 @@ Generating Goldbar for Genetic Circuits with certain Rules
 (R) Do not Reuse Parts: Parts will not be reused in the same sequence
 
 Inputs:
-Principles to include
-Number of sequences
-Number of Cycles
-Part Library - txt file
-Not Orthogonal Library - csv file
+Part Library : CSV File - Required
+Number of Transcription Units : Int - Required
+Principles : String - Optional (Default is None)
+Not Orthogonal Library : CSV File - Optional 
+Part Junction Interference Library : CSV File
 
 Outputs:
 Txt file of GOLDBAR
