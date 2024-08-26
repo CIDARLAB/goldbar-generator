@@ -61,6 +61,13 @@ To save and perform further graph analysis, use [Knox](https://github.com/CIDARL
 ### References
 Brophy, J., Voigt, C. Principles of genetic circuit design. Nat Methods 11, 508–520 (2014). https://doi.org/10.1038/nmeth.2926
 
+# 
+### Manuscript
+
+Nicholas Roehner, James Roberts, Andrei Lapets, Dany Gould, Vidya Akavoor, Lucy Qin, D. Benjamin Gordon, Christopher Voigt, and Douglas Densmore. GOLDBAR: A Framework for Combinatorial Biological Design. ACS Synthetic Biology Article ASAP (2024). 
+
+DOI: https://pubs.acs.org/doi/full/10.1021/acssynbio.4c00296
+
 #
 ### Credits
 The GOLDBAR-Generator was developed by [James Roberts]([https://github.com/Jamesr787]) at [CIDAR LAB](https://www.cidarlab.org) under [Douglas Densmore](https://www.cidarlab.org/doug-densmore).
